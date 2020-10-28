@@ -1,16 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 // vue.config.js
-if (process.env.NODE_ENV === 'production') {
-  module.exports = {
-    assetsDir: 'static',
-    configureWebpack: {
-      externals: {
-        vue: 'Vue',
-        'element-ui': 'ELEMENT',
-        vuex: 'Vuex',
-        'vue-router': 'VueRouter',
-      },
-    },
-  };
-} else {
-  module.exports = {};
-}
+const devConfig = require('./webpack.dev');
+const prodConfig = require('./webpack.prod');
+
+module.exports = {
+  assetsDir: 'static',
+  configureWebpack: process.env.NODE_ENV === 'production' ? prodConfig : devConfig,
+};
