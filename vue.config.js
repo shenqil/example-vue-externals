@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 // vue.config.js
-const devConfig = require('./webpack.dev');
-const prodConfig = require('./webpack.prod');
+const devConfig = require('./dev.config');
+const prodConfig = require('./prod.config');
 
-module.exports = {
-  assetsDir: 'static',
-  configureWebpack: process.env.NODE_ENV === 'production' ? prodConfig : devConfig,
-};
+module.exports = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
