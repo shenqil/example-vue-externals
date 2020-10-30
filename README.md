@@ -1,29 +1,34 @@
 # example-vue
 
-## Project setup
-```
-npm install
-```
+## 运行
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
++ 1. `npm i`
++ 2. `npm run serve`
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## 打包
 
-### Run your unit tests
-```
-npm run test:unit
-```
++ `npm run build`
 
-### Lints and fixes files
-```
-npm run lint
-```
+## 格式化
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
++ `npm run lint`
+
+## 拆分一个第三方包主要步骤(以拆分vue 为例)
+
++ 1. 安装一个包
+  + `npm i vue`
+
++ 2. 打开**prod.config.js** 在 **externals** 属性下增加需要拆分的包
+
+  +
+
+    ```script
+        externals:{
+            vue: 'Vue',
+        }
+    ```
+
++ 3. 打开**prod.html** 增加拆分的包，类似与cdn引入,只不过被手机或pc拦截了
+  + `<script src="libs://libs/vue/2.6.11/vue.min.js"></script>`
+
+**注意:** 类似与element-ui的样式文件放入`src/stylesheet.dev.ts` 中，避免编译到包中,其他与普通配置相似
